@@ -1,4 +1,6 @@
-﻿namespace FurByte.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FurByte.Models
 {
     /// <summary>
     /// The Product model represents a store entity that sells pets, pet food, 
@@ -7,7 +9,15 @@
     /// </summary>
     public class Product
     {
+        [Key]
         public int ProductId { get; set; }
-        public string ProductName { get; set; }
+        [Required]
+        public required string ProductName { get; set; }
+        public string? Description { get; set; } 
+        [Required]
+        public required string Category { get; set; } // e.g., "Pet", "Food", "Toy"
+        [Required]
+        public required int Cost { get; set; } // cost is in pet coins so they will be solid integers
+        public string ImageUrl { get; set; } // URL to the product image
     }
 }
