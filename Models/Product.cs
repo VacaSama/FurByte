@@ -18,6 +18,6 @@ namespace FurByte.Models
         public required string Category { get; set; } // e.g., "Pet", "Food", "Toy"
         [Required]
         public required int Cost { get; set; } // cost is in pet coins so they will be solid integers
-        public string ImageUrl { get; set; } // URL to the product image
+        public string? ImageUrl { get; set; } // URL to the product image
     }
 }
