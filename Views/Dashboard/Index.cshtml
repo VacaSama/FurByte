@@ -1,12 +1,9 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 *@
 @{
     ViewData["Title"] = "Dashboard";
 }
-<script src="~/js/furbyte-canvas.js"></script>
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-
 
 <div class="text-center">
     <h1 class="display-4">FurByte</h1>
@@ -35,11 +32,9 @@
     </div>
 </div>
 
-
-<div>
 <!-- Instead of making a pet profile the pet will just appear here :) -->
-<canvas id="furbyteCanvas" width="300" height="300"></canvas>
-</div>
+    <canvas id="furbyteCanvas" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+
 
 <!-- Interaction Card for ways for the user to keep the pet happy.-->
 <div class="card gap-2" style="width: 23rem;">
@@ -55,4 +50,7 @@
     </div>
 </div>
 
+
+<script src="~/js/furbyte-canvas.js"></script>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
