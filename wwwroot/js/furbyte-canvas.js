@@ -9,4 +9,8 @@ const baseCat = "images/sprites/blankCATBASE.png";
 const baseFace = "images/sprites/baseface.png";
 const eyesClosed = "images/sprites/basefaceclosed.png";
 
-// Load the images on to the canvas 
+// Load the images on to the canvas
+// are any parameters needed for the function to work?
+function buildPet(spriteBlock, x, y) { 
+
+}
