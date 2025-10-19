@@ -56,6 +56,5 @@ window.onload = function () {
         drawSprite(0, 0); // draw first frame
         drawSprite(0, 3); // draw first frame
     }
-
     startGame();
 };
