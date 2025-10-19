@@ -1,0 +1,53 @@
+﻿@*
+
+*@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="text-center">
+    <h1 class="display-4">FurByte</h1>
+</div>
+
+<!-- The progress bars are below, they need to be in their own div class
+    to avoid stretching across the entire page.
+
+    The style will later be changed to have the decay logic
+-->
+<div class="card d-flex flex-column gap-3" style="width: 18rem;">
+    <div class="card-header">Placeholder Name:</div>
+    <div class="card-text">Placeholder Text:</div>
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%"></div>
+    </div>
+
+    <div class="card-text">Placeholder Text:</div>
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%"></div>
+    </div>
+
+    <div class="card-text">Placeholder Text:</div>
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%"></div>
+    </div>
+</div>
+
+<!-- Instead of making a pet profile the pet will just appear here :) -->
+    <canvas id="furbyteCanvas" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+
+
+<!-- Interaction Card for ways for the user to keep the pet happy.-->
+<div class="card gap-2" style="width: 23rem;">
+    <div class="card-header">Interactions Placeholder:</div>
+    <div>
+        <button class="btn" type="button">Play</button>
+        <button class="btn" type="button">Bathe</button>
+    </div>
+    
+    <div>
+        <button class="btn" type="button">Feed</button>
+        <button class="btn" type="button">Pet</button>
+    </div>
+</div>
+
+
