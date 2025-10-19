@@ -10,8 +10,17 @@ namespace FurByte.Models;
 /// </summary>
 public class ApplicationUser : IdentityUser
 {
+    /// <summary>
+    /// Retrieves and sets the DOB from the user, 
+    /// the user must be 13 years or older to register. 
+    /// </summary>
     public DateTime DateOfBirth { get; set; }
-    public int PetCoins { get; set; }
+
+    /// <summary>
+    /// Each user starts with 500 PetCoins to use in the app.
+    /// They can earn more by taking care of their pets. 
+    /// </summary>
+    public int PetCoins { get; set; } = 500; // starting coin amount for each new user.
 
     public ICollection<Pet>? Pets { get; set; }
 
