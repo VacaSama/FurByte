@@ -30,6 +30,11 @@ body {
     text-align: start;
 }
 
+#furbyteCanvas {
+    width: 300px;
+    height: 300px;
+    border: 2px solid;
+}
 
 #interaction-panel {
     /* */
