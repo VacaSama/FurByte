@@ -16,11 +16,11 @@ public class ApplicationUser : IdentityUser
     /// </summary>
     public DateTime DateOfBirth { get; set; }
 
-    /// <summary>
-    /// Each user starts with 500 PetCoins to use in the app.
-    /// They can earn more by taking care of their pets. 
-    /// </summary>
-    public int PetCoins { get; set; } = 500; // starting coin amount for each new user.
+	/// <summary>
+	/// Each user starts with 500 PetCoins to use in the app.
+	/// They can earn more by taking care of their pets. 
+	/// </summary>
+	public int PetCoins { get; set; } = 500; // starting coin amount for each new user.
     
     // Shows the users purchases from the Pet Store(online).
     public ICollection<UserProduct>? Purchases { get; set; }
