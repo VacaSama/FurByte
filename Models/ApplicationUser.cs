@@ -14,7 +14,7 @@ public class ApplicationUser : IdentityUser
     /// Retrieves and sets the DOB from the user, 
     /// the user must be 13 years or older to register. 
     /// </summary>
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly DateOfBirth { get; set; }
 
 	/// <summary>
 	/// Each user starts with 500 PetCoins to use in the app.
