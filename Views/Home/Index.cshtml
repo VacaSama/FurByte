@@ -8,9 +8,11 @@
         <h1 class="display-4">Welcome to FurByte</h1>
         <h2> Your Pixel-based, Fuzzy companion.</h2>
 
+        asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
+
         <div class="align-items-center mb-2" id="landing-page-btn">
-            <button class="btn btn-dark">Register</button>
-            <button class="btn">Login</button>
+            <button class="btn btn-dark" asp-area="Identity" asp-page="/Account/Register">Register</button>
+            <button class="btn" asp-area ="Identity" asp-page ="/Account/Login">Login</button>
         </div>
     </div>
 
