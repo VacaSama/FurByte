@@ -16,8 +16,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace FurByte.Areas.Identity.Pages.Account
-{
+namespace FurByte.Areas.Identity.Pages.Account;
+
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -138,4 +138,3 @@ namespace FurByte.Areas.Identity.Pages.Account
             return Page();
         }
     }
-}
