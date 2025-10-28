@@ -45,6 +45,5 @@ public class ApplicationUser : IdentityUser
 	// Shows the users purchases from the Pet Store(online).
 	public ICollection<UserProduct>? Purchases { get; set; }
     public ICollection<Pet>? Pets { get; set; }
-
     public ICollection<Product>? Products { get; set; }
 }

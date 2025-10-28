@@ -19,6 +19,7 @@ public class OverseerDashboardModel : PageModel
 	[EmailAddress]
 	public required string OverseerEmail { get; set; }
 
+	[Required]
 	public int OverseerRank { get; set; } = 1; // default and lowest rank
 	
 	public void OnGet()
