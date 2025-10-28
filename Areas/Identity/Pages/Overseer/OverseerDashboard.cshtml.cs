@@ -1,4 +1,6 @@
+using FurByte.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -8,6 +10,14 @@ namespace FurByte.Areas.Identity.Pages.Overseer;
 [Authorize(Roles = "Overseer")]
 public class OverseerDashboardModel : PageModel
 {
+	// retrieve the user data from ApplicationUser model.
+	// keep it private to avoid exposing sensitive data.
+	private readonly UserManager<ApplicationUser> _userManager;
+
+	public OverseerDashboardModel(UserManager<ApplicationUser> userManager) {
+		_userManager = userManager;
+	}
+
 	// Properties for managing overseer information
 	[Required]
 	public required string OverseerFirstName { get; set; }
@@ -21,7 +31,22 @@ public class OverseerDashboardModel : PageModel
 
 	[Required]
 	public int OverseerRank { get; set; } = 1; // default and lowest rank
-	
+
+	public async Task<IActionResult> OnGetAsync()
+	{
+		var user = await _userManager.GetUserAsync(User);
+		if (user == null || !await _userManager.IsInRoleAsync(user, "Overseer"))
+		{
+			return Forbid();
+		}
+
+		OverseerFirstName = user.FirstName;
+		OverseerLastName = user.LastName;
+		OverseerEmail = user.Email;
+		OverseerRank = user.Rank;
+
+		return Page();
+	}
 	public void OnGet()
     {
     }
