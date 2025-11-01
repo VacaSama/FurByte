@@ -4,6 +4,7 @@ using FurByte.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FurByte.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251028213712_Overseer-Implementation")]
+    partial class OverseerImplementation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,7 +141,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasIndex("StatsPetStatsId");
 
-                    b.ToTable("Pet", (string)null);
+                    b.ToTable("Pet");
                 });
 
             modelBuilder.Entity("FurByte.Models.PetStats", b =>
@@ -170,7 +173,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasKey("PetStatsId");
 
-                    b.ToTable("PetStats", (string)null);
+                    b.ToTable("PetStats");
                 });
 
             modelBuilder.Entity("FurByte.Models.Product", b =>
@@ -205,7 +208,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("FurByte.Models.UserProduct", b =>
@@ -234,7 +237,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("UserProduct", (string)null);
+                    b.ToTable("UserProduct");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -4,13 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FurByte.Data;
 
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    { }
-
-    public DbSet<Pet> Pets { get; set; }
-    public DbSet<Product> Products { get; set; }
-
+   // public DbSet<Pet> Pets { get; set; }
+   // public DbSet<Product> Products { get; set; }
 }
