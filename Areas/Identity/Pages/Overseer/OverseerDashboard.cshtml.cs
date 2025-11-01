@@ -32,6 +32,13 @@ public class OverseerDashboardModel : PageModel
 	[Required]
 	public int OverseerRank { get; set; } = 1; // default and lowest rank
 
+
+
+	/*AUTHORIZATION - OnGetAsync() method is testing to see if there is a user 
+	 * and checking to see if the user is an overseer. 
+	 * IF the user is null and the user is not an Overseer than they are not allowed
+	 * to see the Overseer Dashboard :) 
+	 */
 	public async Task<IActionResult> OnGetAsync()
 	{
 		var user = await _userManager.GetUserAsync(User);
