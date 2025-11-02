@@ -12,7 +12,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+	// set roles here -- so that we can test overseer functions
+	.AddRoles<IdentityRole>()
+	.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -43,5 +45,24 @@ app.MapControllerRoute(
 
 app.MapRazorPages()
    .WithStaticAssets();
+
+//Seed Roles here 
+using (var scope = app.Services.CreateScope())
+{
+	var services = scope.ServiceProvider; 
+	try
+	{
+		// explicit context for user and role managers
+		UserManager<ApplicationUser> userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+		RoleManager<IdentityRole> roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+		// wait for seeding to complete and avoid crashes then continue
+		await SeedData.InitializeAsync(userManager, roleManager);
+	}
+	catch (Exception ex)
+	{
+		var logger = services.GetRequiredService<ILogger<Program>>();
+		logger.LogError(ex, "An error occurred seeding the database.");
+	}
+}
 
 app.Run();
