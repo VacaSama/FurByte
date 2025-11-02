@@ -54,7 +54,4 @@ public class OverseerDashboardModel : PageModel
 
 		return Page();
 	}
-	public void OnGet()
-    {
-    }
 }
