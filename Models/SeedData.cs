@@ -52,6 +52,7 @@ public class SeedData
 			{
 				throw new Exception($"Failed to create overseer user: {string.Join(", ", createResult.Errors.Select(e => e.Description))}");
 			}
+
 		}
 
 		// iff the overseer is not in the Overseer role, add them to it.
@@ -62,6 +63,13 @@ public class SeedData
 			{
 				throw new Exception($"Failed to add overseer to role: {string.Join(", ", addRoleResult.Errors.Select(e => e.Description))}");
 			}
+		}
+
+		string token = await userManager.GeneratePasswordResetTokenAsync(overseer);
+		var resultChange = await userManager.ResetPasswordAsync(overseer, token, "FurByteOverseer123!");
+		if (!resultChange.Succeeded)
+		{
+			throw new Exception($"Password reset failed: {string.Join(", ", resultChange.Errors.Select(e => e.Description))}");
 		}
 	}
 }
