@@ -54,6 +54,7 @@ public class SeedData
 			}
 		}
 
+		// iff the overseer is not in the Overseer role, add them to it.
 		if (!await userManager.IsInRoleAsync(overseer, "Overseer"))
 		{
 			var addRoleResult = await userManager.AddToRoleAsync(overseer, "Overseer");
