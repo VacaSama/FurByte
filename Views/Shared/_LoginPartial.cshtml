@@ -21,7 +21,7 @@
 }
 @if (User.IsInRole("Overseer"))
 {
-    <a asp-page="/Overseer/OverseerDashboard" class="btn btn-warning">Secret Overseer Button</a>
+        <a asp-area="Identity" asp-page="/Overseer/OverseerDashboard" class="btn btn-warning">Secret Society</a>
 }
 
 else
