@@ -108,6 +108,7 @@ namespace FurByte.Areas.Identity.Pages.Account;
 
 
 			[Required]
+			[MinAge(13)]
 			[DataType(DataType.Date)]	
 			// minimum age requirement to enforce? 13+
 			[Display(Name = "Date of Birth")]
