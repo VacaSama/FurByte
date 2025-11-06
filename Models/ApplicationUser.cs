@@ -7,6 +7,8 @@ namespace FurByte.Models;
 /// <summary>
 /// ApplicationUser models extends Identityuser to 
 /// include additional properties needed for the FurByte application.
+/// 
+/// The ApplicationUser covers Identity management for users and overseers. 
 /// </summary>
 public class ApplicationUser : IdentityUser
 {
