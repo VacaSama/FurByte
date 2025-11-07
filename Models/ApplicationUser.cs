@@ -12,7 +12,13 @@ namespace FurByte.Models;
 /// </summary>
 public class ApplicationUser : IdentityUser
 {
+	/// <summary>
+	/// The user's first name.
+	/// </summary>
 	public required string FirstName { get; set; }
+	/// <summary>
+	/// The user's last name.
+	/// </summary>
 	public required string LastName { get; set; }
 
 	/// <summary>
@@ -47,7 +53,7 @@ public class ApplicationUser : IdentityUser
 	/// </summary>
 	public int ExperienceToNextRank => 100 * Rank;
 
-	// Shows the users purchases from the Pet Store(online).
+	// SHOWS the users purchases from the Pet Store(online).
 	public ICollection<UserProduct>? Purchases { get; set; }
     public ICollection<Pet>? Pets { get; set; }
     public ICollection<Product>? Products { get; set; }
