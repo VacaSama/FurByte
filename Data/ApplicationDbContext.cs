@@ -14,6 +14,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 	public DbSet<UserProduct> UserProducts { get; set; }
 
 	// seed data for pets 
-
 	// create a viewmodel for the rehome requests??
+
+
+
 }

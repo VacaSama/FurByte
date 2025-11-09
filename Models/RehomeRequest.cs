@@ -34,12 +34,13 @@ public class RehomeRequest
 	[Required]
 	public required string OwnerId { get; set; }
 	[Required]
-	// explicit FK navigation to ApplicationUser
+	// explicit FK navigation to ApplicationUser(OwnerId)
 	[ForeignKey("OwnerId")]
 	public required ApplicationUser Owner { get; set; }
 
 	// new owner taking the pet in
 	[Required]
+	// explicit FK navigation to ApplicationUser(NewOwnerId)
 	[ForeignKey("NewOwnerId")]
 	public required string NewOwnerId { get; set; }
 	[Required]
