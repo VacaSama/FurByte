@@ -2,6 +2,12 @@
 
 namespace FurByte.Models;
 
+// custom enum/data type for pet gender 
+public enum PetGender
+{
+	Male, 
+	Female
+}
 public class Pet
 {
     [Key]
@@ -12,7 +18,10 @@ public class Pet
     [Required]
     public required string PetType { get; set; } // cat, dog, bird...etc
 
-    public PetStats? Stats { get; set; }  // Navigation property to PetStats
+	[Required] // the pets gender use enum to cycle through?
+	public required PetGender Gender { get; set; }
+
+	public PetStats? Stats { get; set; }  // Navigation property to PetStats
     
     // Foreign key to ApplicationUser
     public string? ApplicationUserId { get; set; }

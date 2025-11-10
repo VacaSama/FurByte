@@ -21,4 +21,5 @@ public class StorePetViewModel
 	// by that user. (cooldown period?)
 	public bool IsAdopted { get; set; }
 
+
 }

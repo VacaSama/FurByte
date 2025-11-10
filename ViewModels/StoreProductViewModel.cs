@@ -6,6 +6,13 @@
 /// relations between User=>Digital Pet.
 /// </summary>
 public class StoreProductViewModel
-{
+{ // ONLY the necessary fields for the UI display/purchase
+  // of products in the store.
+	public string? ProductName { get; set; } 
+	public string? Description { get; set; } 
+	public string? Category { get; set; } // e.g., "Pet", "Food", "Toy"
+	// cost is in pet coins so they will be solid integers
+	public int Cost { get; set; } 
+	
 
 }
