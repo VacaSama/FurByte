@@ -12,7 +12,10 @@ public class StoreProductViewModel
 	public string? Description { get; set; } 
 	public string? Category { get; set; } // e.g., "Pet", "Food", "Toy"
 	// cost is in pet coins so they will be solid integers
-	public int Cost { get; set; } 
-	
+	public int Price { get; set; }
+	public string? ImageUrl { get; set; } // URL to the product image
+
+	// Ownership info
+	public int QuantityOwned { get; set; }
 
 }

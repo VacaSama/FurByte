@@ -17,7 +17,7 @@ public class Product
     [Required]
     public required string Category { get; set; } // e.g., "Pet", "Food", "Toy"
     [Required]
-    public required int Cost { get; set; } // cost is in pet coins so they will be solid integers
+    public required int Price { get; set; } // cost is in pet coins so they will be solid integers
                                         // Optional: track ownership
     public string? ApplicationUserId { get; set; }
     public ApplicationUser? Buyer { get; set; }

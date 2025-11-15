@@ -8,6 +8,7 @@ public enum PetGender
 	Male, 
 	Female
 }
+// XML DOCUMENTATION NEEDED FOR THE CLASS AND PROPERTIES
 public class Pet
 {
     [Key]
@@ -17,6 +18,8 @@ public class Pet
 
     [Required]
     public required string PetType { get; set; } // cat, dog, bird...etc
+
+	public required int PetFee { get; set; } = 150; // cost of the pet in pet coins
 
 	[Required] // the pets gender use enum to cycle through?
 	public required PetGender Gender { get; set; }
