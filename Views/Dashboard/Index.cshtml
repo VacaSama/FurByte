@@ -41,6 +41,23 @@
 <!-- Instead of making a pet profile the pet will just appear here :) -->
     <canvas id="furbyteCanvas"></canvas>
 
+<!-- Store Modal -->
+<div class="modal fade" id="storeModal" tabindex="-1" role="dialog" aria-labelledby="storeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="storeModalLabel">Pet Store</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="storeContent">
+                <!-- Store content will be loaded here -->
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Interaction Card for ways for the user to keep the pet happy.-->
 <div id ="interaction-panel" class="card gap-2">
@@ -53,6 +70,10 @@
     <div>
         <button id="panel-button" class="btn" type="button">Feed</button>
         <button id="panel-button" class="btn" type="button">Pet</button>
+    </div>
+
+    <div id="panel-button" class="btn" typeof="button">
+        <button>Pet Store</button>
     </div>
 </div>
 
