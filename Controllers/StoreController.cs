@@ -39,12 +39,11 @@ public class StoreController : Controller
 
 		/// specifies that the pet name should be included when
 		/// retrieving pets from the database
-		/// var pets = _context.Pets.Include(p => p.PetName).ToList();
 		var pets = _context.Pets.Select(p => new StorePetViewModel
 		{
 			PetName = p.PetName,
 			ImageUrl = p.ImageUrl, 
-			PetFee = p.PetFee         // And this one too!
+			PetFee = p.PetFee        
 		}).ToList();
 
 		///
