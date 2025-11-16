@@ -1,3 +1,4 @@
+using FurByte.Data;
 using FurByte.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,8 +11,16 @@ namespace FurByte.Areas.Identity.Pages.Overseer;
 [Authorize(Roles = "Overseer")]
 public class OverseerDashboardModel : PageModel
 {
-	// retrieve the user data from ApplicationUser model.
-	// keep it private to avoid exposing sensitive data.
+	/// <summary>
+	/// A readonly field to hold the ApplicationDbContext instance, 
+	/// named _context so that we can access/reference the database
+	/// </summary>
+	private readonly ApplicationDbContext _context;
+
+	/// <summary>
+	/// Retrieves the user data from ApplicationUser model.
+	/// keep it private to avoid exposing sensitive data.
+	/// </summary>
 	private readonly UserManager<ApplicationUser> _userManager;
 
 	public OverseerDashboardModel(UserManager<ApplicationUser> userManager) {
@@ -53,5 +62,20 @@ public class OverseerDashboardModel : PageModel
 		OverseerRank = user.Rank;
 
 		return Page();
+	}
+
+	[HttpPost]
+	public IActionResult ApproveRehomeRequest(int rehomeRequestId)
+	{
+		// insert logic on how to approve rehome requests
+		var rehomeRequest = _context.RehomeRequests.Find(rehomeRequestId);
+		// if the rehome request is blank or if the rehome status is NOT pending 
+		if(rehomeRequest == null || rehomeRequest.Status != RehomeStatus.Pending)
+		{
+			// return that it is not found/doesn't exist
+			return NotFound();
+		}
+
+		return null; // placeholder
 	}
 }

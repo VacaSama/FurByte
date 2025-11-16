@@ -1,6 +1,7 @@
 ﻿using FurByte.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace FurByte.Data;
 
@@ -38,7 +39,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				Gender = PetGender.Male
 			},
 
-			new Pet 
+			new Pet
 			{
 				PetId = 2,
 				PetName = "Flower",
@@ -46,8 +47,24 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				PetFee = default,
 				Gender = PetGender.Female
 			}
-
 			);
-	}
+		// previously there was an error because there were two cascade delete pathes 
+		// this was caused by the two foreign keys in RehomeRequest MODEL
+		// both linking to ApplicationUser(new owner and current owner), 
 
+		// configuring relationships for RehomeRequest
+		// using the builder
+		builder.Entity<RehomeRequest>()
+			.HasOne(r => r.Owner)
+			.WithMany()
+			.HasForeignKey(r => r.OwnerId)
+			.OnDelete(DeleteBehavior.Restrict); // or NoAction ???
+
+		builder.Entity<RehomeRequest>()
+			.HasOne(r => r.NewOwner)
+			.WithMany()
+			.HasForeignKey(r => r.NewOwnerId)
+			.OnDelete(DeleteBehavior.Restrict);
+			
+	} 
 }
