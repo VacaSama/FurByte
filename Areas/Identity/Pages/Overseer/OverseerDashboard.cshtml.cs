@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace FurByte.Areas.Identity.Pages.Overseer;
@@ -75,7 +76,16 @@ public class OverseerDashboardModel : PageModel
 			// return that it is not found/doesn't exist
 			return NotFound();
 		}
+		// how will we find the correct pet needing to be rehomed.
+		// declare a variable that finds and holds the pet that needs to be rehomed 
+		// using the petid and current owner/user
+		var rehomePet = _context.Pets.FirstOrDefault();
 
-		return null; // placeholder
+		// set the status to approved or denied. 
+
+		// what happens if they are denied?
+
+		// return to the overseer dashboard
+		return RedirectToAction("OverseerDashboard");
 	}
 }
