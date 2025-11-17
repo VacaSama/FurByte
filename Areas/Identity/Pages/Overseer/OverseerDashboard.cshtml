@@ -2,9 +2,16 @@
 @model FurByte.Areas.Identity.Pages.Overseer.OverseerDashboardModel
 @{
     ViewData["Title"] = "Overseer Dashboard";
+    /* ADD FOREACH LOOP; FOR THE TWO DIFFERENT TEMPLATES (P1=>P2) (P1=>OVR)
+    // CREATE ANOTHER MODAL FOR THE USER REHOME REQUEST FORM (POP-UP WINDOW)
+    // TWO BUTTON OPTIONS TO GIVE A PET TO A FRIEND OR BACK TO THE OVERSEERS
+    // A TEXT BOX FOR REASONING, SUBMIT BUTTON, WHICH PET THEY ARE REHOMING...ETC
+    */
 }
 
 <h1>Welcome, @Model.OverseerFirstName @Model.OverseerLastName</h1>
+
+
 <div class="grid text-center">
     <div class="card g-col-6" style="width: 25rem;">
         <p class="card-title">Rehome Request Placeholder:</p>
@@ -16,9 +23,14 @@
             <br />
             Overseer @Model.OverseerFirstName, do you Approve or Deny this request?
         </p>
-        <button type="button" class="btn btn-light">Approve</button>
+        <form method="post" asp-page-handler="ApproveRehomeRequest">
+            <input type="hidden" name="rehomeRequestId" />
+            <button type="submit" class="btn btn-light">Approve</button>
+        </form>
         <button type="button" class="btn btn-primary">Deny</button>
     </div>
+
+
     <!-- These are just templates to cards the Overseer may get. -->
     <div class="card g-col-6" style="width: 25rem;">
         <p class="card-title">Rehome Request Placeholder:</p>

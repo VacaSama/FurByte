@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Providers;
 using System.ComponentModel.DataAnnotations;
 
 namespace FurByte.Areas.Identity.Pages.Overseer;
@@ -24,8 +25,9 @@ public class OverseerDashboardModel : PageModel
 	/// </summary>
 	private readonly UserManager<ApplicationUser> _userManager;
 
-	public OverseerDashboardModel(UserManager<ApplicationUser> userManager) {
+	public OverseerDashboardModel(UserManager<ApplicationUser> userManager, ApplicationDbContext context) {
 		_userManager = userManager;
+		_context = context; 
 	}
 
 	// Properties for managing overseer information
@@ -65,8 +67,8 @@ public class OverseerDashboardModel : PageModel
 		return Page();
 	}
 
-	[HttpPost]
-	public IActionResult ApproveRehomeRequest(int rehomeRequestId)
+	// made async for consistency
+	public async Task<IActionResult> OnPostApproveRehomeRequest(int rehomeRequestId)
 	{
 		// insert logic on how to approve rehome requests
 		var rehomeRequest = _context.RehomeRequests.Find(rehomeRequestId);
@@ -76,16 +78,27 @@ public class OverseerDashboardModel : PageModel
 			// return that it is not found/doesn't exist
 			return NotFound();
 		}
-		// how will we find the correct pet needing to be rehomed.
-		// declare a variable that finds and holds the pet that needs to be rehomed 
+		// declared a variable that finds and holds the pet that needs to be rehomed 
 		// using the petid and current owner/user
-		var rehomePet = _context.Pets.FirstOrDefault();
+		var rehomePet = _context.Pets.FirstOrDefault(p => p.PetName == rehomeRequest.PetName
+				&& p.ApplicationUserId == rehomeRequest.OwnerId);
+
+		if (rehomePet == null)
+		{
+			return BadRequest($"Could not find {rehomeRequest.PetName}, associated with " +
+				$"this user"); 
+		}
+
+		// reset the current owner now to the NEW Owner
+		// (from Jimmy(former owner) => Sally(new owner))
+		rehomePet.ApplicationUserId = rehomeRequest.NewOwnerId;
 
 		// set the status to approved or denied. 
-
+		rehomeRequest.Status = RehomeStatus.Approved;
+		await _context.SaveChangesAsync();
 		// what happens if they are denied?
 
-		// return to the overseer dashboard
-		return RedirectToAction("OverseerDashboard");
+		// stay on the same page
+		return RedirectToPage();
 	}
 }

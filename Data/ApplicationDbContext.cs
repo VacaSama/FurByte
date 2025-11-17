@@ -48,10 +48,42 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				Gender = PetGender.Female
 			}
 			);
+
+		///
+		///
+		///
+		builder.Entity<Product>().HasData(
+			new Product
+			{
+				ProductId = 1, 
+				ProductName = "Generic Pet Food",
+				Description = "Basic pet food, cheap and filling",
+				Category = "Pet Food",
+				Price = 50
+			},
+
+			new Product {
+				ProductId = 2,
+				ProductName = "Golden Boy'o Biscuits",
+				Description = "These awesome treats bring all the pets to the yard..." +
+				"seriously where did they come from.",
+				Category = "Treats",
+				Price = 75
+			},
+
+			new Product
+			{
+				ProductId = 3,
+				ProductName = "Squeaky Toy",
+				Description = "It squeaks!",
+				Category = "Toys",
+				Price = 45
+			}
+
+			);
 		// previously there was an error because there were two cascade delete pathes 
 		// this was caused by the two foreign keys in RehomeRequest MODEL
 		// both linking to ApplicationUser(new owner and current owner), 
-
 		// configuring relationships for RehomeRequest
 		// using the builder
 		builder.Entity<RehomeRequest>()
