@@ -57,8 +57,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 			{
 				ProductId = 1, 
 				ProductName = "Generic Pet Food",
-				Description = "Basic pet food, cheap and filling",
+				Description = "Basic pet food, cheap and filling." +
+				" For all pet types",
 				Category = "Pet Food",
+				ImageUrl = "~/images/products/petfood_basic.png",
 				Price = 50
 			},
 
@@ -68,6 +70,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				Description = "These awesome treats bring all the pets to the yard..." +
 				"seriously where did they come from.",
 				Category = "Treats",
+				ImageUrl = "~/images/products/treats_golden.png",
 				Price = 75
 			},
 
@@ -77,9 +80,19 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				ProductName = "Squeaky Toy",
 				Description = "It squeaks!",
 				Category = "Toys",
+				ImageUrl = "~/images/products/squeakytoy_used.png",
 				Price = 45
+			},
+			
+			new Product
+			{
+				ProductId = 4,
+				ProductName = "Pet Shampoo",
+				Description = "Keeps your pet shiny and clean.",
+				Category = "Hygiene",
+				ImageUrl = "~/images/products/pet_shampoo.png",
+				Price = 75
 			}
-
 			);
 		// previously there was an error because there were two cascade delete pathes 
 		// this was caused by the two foreign keys in RehomeRequest MODEL
