@@ -25,7 +25,15 @@ public class StoreController : Controller
 
 	public IActionResult Index()
 	{
-		return View();
+		var viewModel = new StorePageViewModel
+		{
+			// intialize pets and products
+			// pets = _context.Pets.ToList,
+
+		};
+
+		return View(viewModel);
+
 	}
 
 	/// <summary>

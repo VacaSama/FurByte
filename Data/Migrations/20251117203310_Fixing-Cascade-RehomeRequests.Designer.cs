@@ -4,6 +4,7 @@ using FurByte.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FurByte.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251117203310_Fixing-Cascade-RehomeRequests")]
+    partial class FixingCascadeRehomeRequests
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,7 +147,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasIndex("StatsPetStatsId");
 
-                    b.ToTable("Pets", (string)null);
+                    b.ToTable("Pets");
 
                     b.HasData(
                         new
@@ -194,7 +197,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasKey("PetStatsId");
 
-                    b.ToTable("PetStats", (string)null);
+                    b.ToTable("PetStats");
                 });
 
             modelBuilder.Entity("FurByte.Models.Product", b =>
@@ -229,7 +232,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
 
                     b.HasData(
                         new
@@ -303,7 +306,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("RehomeRequests", (string)null);
+                    b.ToTable("RehomeRequests");
                 });
 
             modelBuilder.Entity("FurByte.Models.UserProduct", b =>
@@ -332,7 +335,7 @@ namespace FurByte.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("UserProducts", (string)null);
+                    b.ToTable("UserProducts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

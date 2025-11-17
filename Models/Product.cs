@@ -21,7 +21,7 @@ public class Product
                                         // Optional: track ownership
     public string? ApplicationUserId { get; set; }
     public ApplicationUser? Buyer { get; set; }
-    public string? ImageUrl { get; set; } // URL to the product image
+    public string? ImageURL { get; set; } // URL to the product image
 }
 
 /// <summary>

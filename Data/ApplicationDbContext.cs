@@ -77,8 +77,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 			new Product
 			{
 				ProductId = 3,
-				ProductName = "Squeaky Toy",
-				Description = "It squeaks!",
+				ProductName = "Used Squeaky Toy",
+				Description = "Creepy but squeaky!",
 				Category = "Toys",
 				ImageUrl = "~/images/products/squeakytoy_used.png",
 				Price = 45

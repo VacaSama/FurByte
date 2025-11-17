@@ -4,27 +4,56 @@
 @{
     // C# code goes here 
 }
+@model FurByte.ViewModels.StorePageViewModel
+
 
 <h2> Adoptable Pets!</h2>
+@if(Model?.Pets != null ) {
+    @foreach (var pet in Model.Pets)
+    {
+        <div>
+            <div class="card" style="width: 18rem;">
+                <img src="@pet.ImageUrl" class="card-img-top" alt="pet_pfp">
+                <div class="card-body">
+                <!-- Cat, Female -->
+                    <h5 class="card-subtitle">@pet.PetType, @pet.PetGender</h5>
+                    <span>"Price: @pet.PetFee"</span>
 
-<!-- For each of the pets in the Pet model, make a card for example-->
-@foreach (var pet in Model.Pet)
-{
-    <div>
-        <!--a card can be made for each pet here?-->
-        <div class="card h-100">
-
+                <!-- purchase button below-->
+                    <a href="" class="btn btn-primary">Purchase</a>
+                </div>
+            </div>
         </div>
-    </div>
+    }
+}
+else
+{
+    <p>No pets available right now.</p>
 }
 
 
 <h2>Pet Products!</h2>
 
-@foreach (var product in Model.Products)
-{
-    <div>
-        <!--a card can be made for each product here?-->
+@if(Model?.Products != null ) {
+    @foreach (var product in Model.Products)
+    {
+        <div>
+            <div class="card" style="width: 18rem;">
+                <img src="@product.ImageURL" class="card-img-top" alt="product_img">
+                <div class="card-body">
+                <!-- Golden Boy'o Biscuits, Treats' -->
+                    <h5 class="card-subtitle">@product.ProductName, @product.Category</h5>
+                    <p class=" card-text">@product.Description</p>
+                    <span>"Price: @product.Price"</span>
 
-    </div>
+                <!-- purchase button below-->
+                    <a href="" class="btn btn-primary">Purchase</a>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No pet products available right now.</p>
 }

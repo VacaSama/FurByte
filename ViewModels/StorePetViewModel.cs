@@ -1,4 +1,6 @@
-﻿namespace FurByte.ViewModels;
+﻿using FurByte.Models;
+
+namespace FurByte.ViewModels;
 
 /// <summary>
 /// Represents the view model for storing a pet in the Pet Store, users 
@@ -15,6 +17,8 @@ public class StorePetViewModel
 	// default for now will be 150 pet coins, 
 	// I don't want to overprice pets yet
 	public int PetFee { get; set; }
+
+	public PetGender PetGender { get; set; }
 
 	public string? ImageUrl { get; set; }
 
