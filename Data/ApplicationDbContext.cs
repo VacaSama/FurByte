@@ -35,7 +35,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				PetId = 1,
 				PetName = "Rudy",
 				PetType = "Cat",
-				PetFee = default,
+				PetFee = 150,
 				Gender = PetGender.Male
 			},
 
@@ -44,7 +44,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				PetId = 2,
 				PetName = "Flower",
 				PetType = "Cat",
-				PetFee = default,
+				PetFee = 150,
 				Gender = PetGender.Female
 			}
 			);

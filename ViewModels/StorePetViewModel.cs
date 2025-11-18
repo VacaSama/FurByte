@@ -26,6 +26,4 @@ public class StorePetViewModel
 	// adopt that same pet type. example: yellow cat can only be adopted once
 	// by that user. (cooldown period?)
 	public bool IsAdopted { get; set; }
-
-
 }

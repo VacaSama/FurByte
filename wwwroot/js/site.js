@@ -57,4 +57,12 @@ window.onload = function () {
         drawSprite(0, 3); // draw first frame
     }
     startGame();
+
+    function LoadStorePartial() {
+        $('#storeContent').html('<p>Loading store...</p>');
+        $('#storeModal').modal('show');
+        $('#storeContent').load('/Dashboard/LoadStorePartial');
+    }
+
+
 };

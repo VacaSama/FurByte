@@ -3,7 +3,10 @@
 *@
 @{
     ViewData["Title"] = "Dashboard";
+
 }
+    @model FurByte.ViewModels.StorePageViewModel
+    @await Html.PartialAsync("_StorePartial", Model)
 
 <div class="text-center">
     <h1 class="display-4">Placeholder Title: </h1>
@@ -74,7 +77,7 @@
 
     <!-- this button may need to be changed to <a>-->
     <div>
-        <a class="btn" asp-area="" asp-controller="Store" asp-action="Index">Pet Store</a>
+        <button id="loadstore-button" class="btn" onclick="LoadStorePartial()">Pet Store</button>
         <button id="panel-button" class="btn" type="button">Rehome Pet*ph*</button>
     </div>
 </div>

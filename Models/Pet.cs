@@ -29,7 +29,8 @@ public class Pet
     // Foreign key to ApplicationUser
     public string? ApplicationUserId { get; set; }
     public ApplicationUser? Owner { get; set; }
-    public string? ImageUrl { get; set; } // URL to the pet image
+	public bool IsAdopted { get; set; }
+	public string? ImageUrl { get; set; } // URL to the pet image
     
 }
 public class PetStats 
