@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace FurByte.Data.Migrations
+namespace FurByte.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251116200031_Pets-Update")]
-    partial class PetsUpdate
+    [Migration("20251126195337_CPUInitial-Create")]
+    partial class CPUInitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,6 +127,9 @@ namespace FurByte.Data.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsAdopted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("PetFee")
                         .HasColumnType("int");
 
@@ -154,7 +157,8 @@ namespace FurByte.Data.Migrations
                         {
                             PetId = 1,
                             Gender = 0,
-                            PetFee = 0,
+                            IsAdopted = false,
+                            PetFee = 150,
                             PetName = "Rudy",
                             PetType = "Cat"
                         },
@@ -162,7 +166,8 @@ namespace FurByte.Data.Migrations
                         {
                             PetId = 2,
                             Gender = 1,
-                            PetFee = 0,
+                            IsAdopted = false,
+                            PetFee = 150,
                             PetName = "Flower",
                             PetType = "Cat"
                         });
@@ -233,6 +238,44 @@ namespace FurByte.Data.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            Category = "Pet Food",
+                            Description = "Basic pet food, cheap and filling. For all pet types",
+                            ImageUrl = "~/images/products/petfood_basic.png",
+                            Price = 50,
+                            ProductName = "Generic Pet Food"
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            Category = "Treats",
+                            Description = "These awesome treats bring all the pets to the yard...seriously where did they come from.",
+                            ImageUrl = "~/images/products/treats_golden.png",
+                            Price = 75,
+                            ProductName = "Golden Boy'o Biscuits"
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            Category = "Toys",
+                            Description = "Creepy but squeaky!",
+                            ImageUrl = "~/images/products/squeakytoy_used.png",
+                            Price = 45,
+                            ProductName = "Used Squeaky Toy"
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            Category = "Hygiene",
+                            Description = "Keeps your pet shiny and clean.",
+                            ImageUrl = "~/images/products/pet_shampoo.png",
+                            Price = 75,
+                            ProductName = "Pet Shampoo"
+                        });
                 });
 
             modelBuilder.Entity("FurByte.Models.RehomeRequest", b =>
@@ -466,13 +509,13 @@ namespace FurByte.Data.Migrations
                     b.HasOne("FurByte.Models.ApplicationUser", "NewOwner")
                         .WithMany()
                         .HasForeignKey("NewOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FurByte.Models.ApplicationUser", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("NewOwner");
