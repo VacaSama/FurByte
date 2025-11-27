@@ -63,6 +63,4 @@ window.onload = function () {
         $('#storeModal').modal('show');
         $('#storeContent').load('/Dashboard/LoadStorePartial');
     }
-
-
 };
