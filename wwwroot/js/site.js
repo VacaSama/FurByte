@@ -30,6 +30,7 @@ window.onload = function () {
             5, 5,
             spriteWidth, spriteHeight
         );
+        // function to draw a specific sprite frame //
         function drawSprite(spriteX, spriteY) {
             context.clearRect(0, 0, canvas.width, canvas.height);
             context.drawImage(
@@ -42,6 +43,7 @@ window.onload = function () {
         };
     };
 
+    /* Game Area Object */
     var gameArea = {
         canvas: canvas,
         start: function () {
@@ -50,7 +52,7 @@ window.onload = function () {
             this.context = this.canvas.getContext("2d");
         }
     };
-
+    /* When the game starts up the Sprite will load into the game as well*/
     function startGame() {
         gameArea.start();
         drawSprite(0, 0); // draw first frame
@@ -58,6 +60,17 @@ window.onload = function () {
     }
     startGame();
 
+    /* Progress Bar Animation */
+    function animateProgressBars(start) { 
+        // search for the class element -- >
+        let progressBars = document.getElementsByClassName("progress-bar");
+        // this will set the value of each progress bar to the start value
+        let value = start; 
+    }
+
+    /* Loads The Store Partial View , as a pop-up modal
+    - on the pet dashboard page. 
+    */
     function LoadStorePartial() {
         $('#storeContent').html('<p>Loading store...</p>');
         $('#storeModal').modal('show');

@@ -6,6 +6,7 @@
 
 }
     @model FurByte.ViewModels.StorePageViewModel
+    
     @await Html.PartialAsync("_StorePartial", Model)
 
 <div class="text-center">
@@ -26,7 +27,7 @@
     </div>
 
     <div class="card-text">Energy:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model." aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%" id="EnergyBar"></div>
     </div>
 
