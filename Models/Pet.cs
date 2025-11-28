@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using FurByte.ViewModels;
 namespace FurByte.Models;
 
 /// <summary>

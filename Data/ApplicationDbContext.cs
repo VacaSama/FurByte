@@ -10,6 +10,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 	// add and create things for the database here :)  
 
 	public DbSet<Pet> Pets { get; set; }
+	public DbSet<PetStats> PetStats { get; set; }
 	public DbSet<RehomeRequest> RehomeRequests { get; set; }
 	public DbSet<Product> Products { get; set; }
 	public DbSet<UserProduct> UserProducts { get; set; }
