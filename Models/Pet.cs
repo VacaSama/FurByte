@@ -23,7 +23,6 @@ public enum PetMood
 	Playful
 }
 
-
 /// <summary>
 /// The Pet class represents a virtual Pet that the users can adopt
 /// and care for. 
@@ -38,7 +37,7 @@ public class Pet
     [Required]
     public required string PetType { get; set; } // cat, dog, bird...etc
 
-	public required int PetFee { get; set; } = 150; // cost of the pet in pet coins
+	public int PetFee { get; set; } = 150; // cost of the pet in pet coins
 
 	[Required] // the pets gender use enum to cycle through?
 	public required PetGender Gender { get; set; }

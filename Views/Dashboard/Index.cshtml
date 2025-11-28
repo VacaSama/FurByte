@@ -3,11 +3,8 @@
 *@
 @{
     ViewData["Title"] = "Dashboard";
-
 }
-@model FurByte.ViewModels.StorePageViewModel
-@await Html.PartialAsync("_StorePartial", Model) 
-    
+@model PetStats
 
 <div class="text-center">
     <h1 class="display-4">Placeholder Title: </h1>
@@ -22,46 +19,28 @@
     <div class="card-header">Pet Needs:</div>
 
     <div class="card-text">Happiness:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Happiness" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%" id="HappyBar"></div>
     </div>
 
     <div class="card-text">Energy:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Energy" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%" id="EnergyBar"></div>
     </div>
 
     <div class="card-text">Hunger:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Hunger" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%" id="HungerBar"></div>
     </div>
 
     <div class="card-text">Hygiene:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Hygiene" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%" id="HygieneBar"></div>
     </div>
 </div>
 
 <!-- Instead of making a pet profile the pet will just appear here :) -->
     <canvas id="furbyteCanvas"></canvas>
-
-@* <!-- Store Modal -->
-<div class="modal fade" id="storeModal" tabindex="-1" role="dialog" aria-labelledby="storeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="storeModalLabel">Pet Store</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="storeContent">
-                <!-- Store content will be loaded here -->
-
-            </div>
-        </div>
-    </div>
-</div> *@
 
 <!-- Interaction Card for ways for the user to keep the pet happy.-->
 <div id ="interaction-panel" class="card gap-2">

@@ -17,5 +17,5 @@ public class StorePageViewModel
 	/// </summary>
 	public List<StoreProductViewModel>? Products { get; set; }
 
-	public List<PetStats>? PetStats { get; set; }
+	//public List<PetStats>? PetStats { get; set; }
 }
