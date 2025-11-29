@@ -44,7 +44,6 @@ public class StoreController : Controller
 		var pets = _context.Pets.Select(p => new StorePetViewModel
 		{
 			PetName = p.PetName,
-			PetGender = PetGender.Male,
 			ImageUrl = p.ImageUrl,
 			PetFee = p.PetFee
 		}).ToList();

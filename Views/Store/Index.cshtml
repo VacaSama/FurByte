@@ -3,26 +3,18 @@
 For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+	ViewData["Title"] = "Pet Store";
 }
 
 @model FurByte.ViewModels.StorePageViewModel
 @await Html.PartialAsync("_StorePartial", Model)
 
-
+<div id="closeStoreBtn" class="btn btn-close">Close Store</div>
  <!-- Store Modal -->
-<div class="modal fade" id="storeModal" tabindex="-1" role="dialog" aria-labelledby="storeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="storeModalLabel">Pet Store</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="storeContent">
-                <!-- Store content will be loaded here -->
-
-            </div>
-        </div>
+<div id="storeModal" class="modal">
+    <div class="modal-content">
+        <span id="closeBtn">&times;</span>
+        <p>Hello, I’m a modal!</p>
     </div>
+    <partial name="_StorePartial" />
 </div>

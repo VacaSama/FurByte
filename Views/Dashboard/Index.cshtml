@@ -1,5 +1,7 @@
 ﻿@*
-
+    This is the DASHBOARD VIEW ------- 
+    the user can view their pets stats here. Increase them by 
+    interacting with the pet.
 *@
 @{
     ViewData["Title"] = "Dashboard";
@@ -57,7 +59,7 @@
 
     <!-- this button may need to be changed to <a>-->
     <div>
-        <button id="loadstore-button" class="btn" onclick="LoadStorePartial()">Pet Store</button>
+        <a id="store-button" asp-controller="Store" asp-action="Index" class="btn btn-outline-secondary">Pet Store</a>
         <button id="panel-button" class="btn" type="button">Rehome Pet*ph*</button>
     </div>
 </div>

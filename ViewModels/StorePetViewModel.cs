@@ -15,7 +15,7 @@ public class StorePetViewModel
 
 	// how much the pet costs in pet coins
 	// default for now will be 150 pet coins, 
-	// I don't want to overprice pets yet
+	// I don't want to overprice pets 
 	public int PetFee { get; set; }
 
 	public PetGender PetGender { get; set; }
