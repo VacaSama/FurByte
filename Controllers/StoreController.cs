@@ -26,7 +26,32 @@ public class StoreController : Controller
 
 	public IActionResult Index()
 	{
-		return View();
+		var pets = _context.Pets.Select(p => new StorePetViewModel
+		{
+			PetName = p.PetName,
+			PetType = p.PetType,
+			PetFee = p.PetFee,
+			PetGender = p.Gender,
+			ImageUrl = p.ImageUrl,
+			IsAdopted = p.IsAdopted
+		}).ToList();
+
+		var products = _context.Products.Select(pr => new StoreProductViewModel
+		{
+			ProductName = pr.ProductName,
+			Category = pr.Category,
+			Description = pr.Description,
+			Price = pr.Price,
+			ImageUrl = pr.ImageUrl
+		}).ToList();
+
+		var viewModel = new StorePageViewModel
+		{
+			Pets = pets,
+			Products = products
+		};
+
+		return View(viewModel);
 	}
 
 	/// <summary>
@@ -34,43 +59,43 @@ public class StoreController : Controller
 	/// a pop-up window that displays out store items without reloading the entire page
 	/// </summary>
 	/// <returns></returns>
-	public IActionResult LoadStorePartial()
-	{
-		// edit documentation comments below
-		///
-		/// 
-		/// specifies that the pet name should be included when
-		/// retrieving pets from the database
-		var pets = _context.Pets.Select(p => new StorePetViewModel
-		{
-			PetName = p.PetName,
-			ImageUrl = p.ImageUrl,
-			PetFee = p.PetFee
-		}).ToList();
+	//public IActionResult LoadStorePartial()
+	//{
+	//	// edit documentation comments below
+	//	///
+	//	/// 
+	//	/// specifies that the pet name should be included when
+	//	/// retrieving pets from the database
+	//	var pets = _context.Pets.Select(p => new StorePetViewModel
+	//	{
+	//		PetName = p.PetName,
+	//		ImageUrl = p.ImageUrl,
+	//		PetFee = p.PetFee
+	//	}).ToList();
 
-		///
-		var products = _context.Products.Select(p => new StoreProductViewModel
-		{
-			ProductName = p.ProductName,
-			Category = p.Category,
-			Description = p.Description,
-			ImageUrl = p.ImageUrl,
-			Price = p.Price
-		}).ToList();
+	//	///
+	//	var products = _context.Products.Select(p => new StoreProductViewModel
+	//	{
+	//		ProductName = p.ProductName,
+	//		Category = p.Category,
+	//		Description = p.Description,
+	//		ImageUrl = p.ImageUrl,
+	//		Price = p.Price
+	//	}).ToList();
 
-		///
-		var userProducts = _context.UserProducts.Select(p => new StoreProductViewModel
-		{
-			QuantityOwned = p.Quantity
-		}).ToList();
+	//	///
+	//	var userProducts = _context.UserProducts.Select(p => new StoreProductViewModel
+	//	{
+	//		QuantityOwned = p.Quantity
+	//	}).ToList();
 
-		///
-		var viewModel = new StorePageViewModel
-		{
-			Pets = pets,
-			Products = products
-		};
-		return PartialView("_StorePartial", viewModel);
-	}
+	//	///
+	//	var viewModel = new StorePageViewModel
+	//	{
+	//		Pets = pets,
+	//		Products = products
+	//	};
+	//	return PartialView("_StorePartial", viewModel);
+	//}
 
 }
