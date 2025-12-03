@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace FurByte.Data.Migrations
+namespace FurByte.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251118052641_Dataase-Update2")]
-    partial class DataaseUpdate2
+    [Migration("20251126195337_CPUInitial-Create")]
+    partial class CPUInitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

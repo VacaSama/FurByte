@@ -26,6 +26,38 @@ public class StoreController : Controller
 
 	public IActionResult Index()
 	{
-		return View();
+		var pets = _context.Pets.Select(p => new StorePetViewModel
+		{
+			PetName = p.PetName,
+			PetType = p.PetType,
+			PetFee = p.PetFee,
+			PetGender = p.Gender,
+			ImageUrl = p.ImageUrl,
+			IsAdopted = p.IsAdopted
+		}).ToList();
+
+		var products = _context.Products.Select(pr => new StoreProductViewModel
+		{
+			ProductName = pr.ProductName,
+			Category = pr.Category,
+			Description = pr.Description,
+			Price = pr.Price,
+			ImageUrl = pr.ImageUrl
+		}).ToList();
+
+		var viewModel = new StorePageViewModel
+		{
+			Pets = pets,
+			Products = products
+		};
+
+		return View(viewModel);
 	}
+
+	/// <summary>
+	/// this IActionResult method returns a partial view for the store page
+	/// a pop-up window that displays out store items without reloading the entire page
+	/// </summary>
+	/// <returns></returns>
+
 }

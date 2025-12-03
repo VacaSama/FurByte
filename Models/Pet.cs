@@ -1,14 +1,32 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using FurByte.ViewModels;
 namespace FurByte.Models;
 
-// custom enum/data type for pet gender 
+/// <summary>
+/// custom enum/data type for pet gender,
+/// </summary>
 public enum PetGender
 {
 	Male, 
 	Female
 }
-// XML DOCUMENTATION NEEDED FOR THE CLASS AND PROPERTIES
+/// <summary>
+/// custom enum/data type for pet mood, 
+/// can cycle through: Happy, Sad, Hungry, Tired, Playful.
+/// </summary>
+public enum PetMood
+{
+	Happy, 
+	Sad, 
+	Hungry, 
+	Tired, 
+	Playful
+}
+
+/// <summary>
+/// The Pet class represents a virtual Pet that the users can adopt
+/// and care for. 
+/// </summary>
 public class Pet
 {
     [Key]
@@ -19,7 +37,7 @@ public class Pet
     [Required]
     public required string PetType { get; set; } // cat, dog, bird...etc
 
-	public required int PetFee { get; set; } = 150; // cost of the pet in pet coins
+	public int PetFee { get; set; } = 150; // cost of the pet in pet coins
 
 	[Required] // the pets gender use enum to cycle through?
 	public required PetGender Gender { get; set; }
@@ -33,11 +51,17 @@ public class Pet
 	public string? ImageUrl { get; set; } // URL to the pet image
     
 }
+
+/// <summary>
+/// PetStats class give value to the various progress bars for the pets
+/// needs/wants and mood. Over a period of time these stats 
+/// will decay.
+/// </summary>
 public class PetStats 
 {
     [Key]
     public int PetStatsId { get; set; }
-    public string PetMood { get; set; } = "Happy"; // mood of the pet, e.g., "Happy", "Sad", "Hungry", etc.
+    public PetMood PetMood { get; set; } = PetMood.Happy; // mood of the pet, e.g., "Happy", "Sad", "Hungry", etc.
     public int Happiness { get; set; } = 50; // happiness level of the pet, ranges from 0 to 100
     public int Energy { get; set; } = 75; // energy level of the pet, ranges from 0 to 100
     public int Hunger { get; set; } = 50; // hunger level of the pet, ranges from 0 to 100

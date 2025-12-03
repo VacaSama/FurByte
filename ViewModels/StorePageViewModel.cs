@@ -1,4 +1,6 @@
-﻿namespace FurByte.ViewModels;
+﻿using FurByte.Models;
+
+namespace FurByte.ViewModels;
 
 /// <summary>
 /// This view model stores Store PAGE information, for the UI.
@@ -14,4 +16,5 @@ public class StorePageViewModel
 	/// displays available products in the store
 	/// </summary>
 	public List<StoreProductViewModel>? Products { get; set; }
+
 }

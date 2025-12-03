@@ -47,7 +47,7 @@ public class SeedData
 			};
 
 			// here is the default password for the overseer
-			var createResult = await userManager.CreateAsync(overseer, "FurByt30verseer"); 
+			var createResult = await userManager.CreateAsync(overseer, "FurByteOverseer123!"); 
 			if (!createResult.Succeeded)
 			{
 				throw new Exception($"Failed to create overseer user: {string.Join(", ", createResult.Errors.Select(e => e.Description))}");
