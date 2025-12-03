@@ -28,11 +28,4 @@ public class StoreController : Controller
 	{
 		return View();
 	}
-
-	/// <summary>
-	/// this IActionResult method returns a partial view for the store page
-	/// a pop-up window that displays out store items without reloading the entire page
-	/// </summary>
-	/// <returns></returns>
-
 }
