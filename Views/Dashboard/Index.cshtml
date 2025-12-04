@@ -1,5 +1,5 @@
 ﻿@*
-    This is the DASHBOARD VIEW ------- 
+    This is the PET DASHBOARD VIEW ------- 
     the user can view their pets stats here. Increase them by 
     interacting with the pet.
 *@
@@ -8,8 +8,30 @@
 }
 @model PetStats
 
+
+<!-- PET DASHBOARD TITLE-->
 <div class="text-center">
-    <h1 class="display-4">Placeholder Title: </h1>
+    <h1 class="display-4">Pet Dashboard</h1>
+</div>
+
+<!--STORE MODAL TO DISPLAY ADOPTABLE PETS AND PRODUCTS-->
+<div>
+    <a id="store-button" href="#" class="btn btn-outline-secondary">Pet Store</a>
+
+    <div class="modal fade" id="storeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Store</h5>
+                    <button id="closeStoreBtn" class="btn-close" data-bs-dismiss="modal"></button>
+
+                </div>
+                    <div id="storeModalBody" class="modal-body">
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- The progress bars are below, they need to be in their own div class
@@ -59,9 +81,7 @@
 
     <!-- this button may need to be changed to <a>-->
     <div>
-        <a id="store-button" asp-controller="Store" asp-action="Index" class="btn btn-outline-secondary">Pet Store</a>
         <button id="panel-button" class="btn" type="button">Rehome Pet*ph*</button>
     </div>
+
 </div>
-
-

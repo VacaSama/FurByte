@@ -21,6 +21,7 @@ namespace FurByte.Controllers;
 	/// <returns></returns>
 	public IActionResult Index()
         {
+		// replace this with a combined ViewModel that holds the store and dashboard stuff
 		var petStats = new PetStats(); // default Pet Stats from the PetStats model
 		return View("Index", petStats); // explicitly load Index.cshtml
 	}

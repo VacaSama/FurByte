@@ -147,7 +147,7 @@ namespace FurByte.Migrations
 
                     b.HasIndex("StatsPetStatsId");
 
-                    b.ToTable("Pets");
+                    b.ToTable("Pets", (string)null);
 
                     b.HasData(
                         new
@@ -198,7 +198,7 @@ namespace FurByte.Migrations
 
                     b.HasKey("PetStatsId");
 
-                    b.ToTable("PetStats");
+                    b.ToTable("PetStats", (string)null);
                 });
 
             modelBuilder.Entity("FurByte.Models.Product", b =>
@@ -233,7 +233,7 @@ namespace FurByte.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -307,7 +307,7 @@ namespace FurByte.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("RehomeRequests");
+                    b.ToTable("RehomeRequests", (string)null);
                 });
 
             modelBuilder.Entity("FurByte.Models.UserProduct", b =>
@@ -336,7 +336,7 @@ namespace FurByte.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("UserProducts");
+                    b.ToTable("UserProducts", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

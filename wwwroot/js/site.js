@@ -73,34 +73,38 @@ window.onload = function () {
     */
     // store.js
 
-    function openStoreModal() {
-        document.getElementById("storeModal").style.display = "block";
-    }
-
-    function closeStoreModal() {
-        document.getElementById("storeModal").style.display = "none";
-    }
-
-    // Attach events once DOM is ready
     document.addEventListener("DOMContentLoaded", function () {
-        const closeBtn = document.getElementById("closeStoreBtn");
-        const openBtn = document.getElementById("store-button");
 
-        store - button.addEventListener("click", function () {
-            fetch('/Store/LoadStorePartial')
+        const openBtn = document.getElementById("store-button");
+        const modal = document.getElementById("storeModal");
+        const closeBtn = document.getElementById("closeStoreBtn");
+        const content = document.getElementById("storeModalBody");
+
+        // Open the modal + load store content
+        openBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            fetch('/Store/StorePartial', {
+                headers: { "X-Requested-With": "XMLHttpRequest" }
+            })
                 .then(response => response.text())
                 .then(html => {
                     content.innerHTML = html;
                     modal.style.display = "block";
                 });
+        });
 
-            if (openBtn) {
-                openBtn.addEventListener("click", openStoreModal);
-            }
+        // Close the modal
+        closeBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
 
-            if (closeBtn) {
-                closeBtn.addEventListener("click", closeStoreModal);
+        // Close modal if user clicks outside the modal box
+        window.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
             }
         });
     });
+
 }
