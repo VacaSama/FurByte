@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FurByte.Migrations
 {
     /// <inheritdoc />
-    public partial class CPUInitialCreate : Migration
+    public partial class DesktopInitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -64,7 +64,7 @@ namespace FurByte.Migrations
                 {
                     PetStatsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PetMood = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PetMood = table.Column<int>(type: "int", nullable: false),
                     Happiness = table.Column<int>(type: "int", nullable: false),
                     Energy = table.Column<int>(type: "int", nullable: false),
                     Hunger = table.Column<int>(type: "int", nullable: false),

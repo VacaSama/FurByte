@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FurByte.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251128202942_PetStatsUpdate")]
-    partial class PetStatsUpdate
+    [Migration("20251204041602_DesktopInitial-Create")]
+    partial class DesktopInitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
