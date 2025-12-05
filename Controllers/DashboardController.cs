@@ -22,7 +22,10 @@ namespace FurByte.Controllers;
 	public IActionResult Index()
         {
 		// replace this with a combined ViewModel that holds the store and dashboard stuff
-		var petStats = new PetStats(); // default Pet Stats from the PetStats model
-		return View("Index", petStats); // explicitly load Index.cshtml
+		//var petStats = new PetStats(); // default Pet Stats from the PetStats model
+
+		var dashboardView = new DashboardViewModel();
+
+		return View("Index", dashboardView); // explicitly load Index.cshtml
 	}
 }
