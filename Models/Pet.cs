@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using FurByte.ViewModels;
 namespace FurByte.Models;
 
@@ -61,7 +62,17 @@ public class PetStats
 {
     [Key]
     public int PetStatsId { get; set; }
-    public PetMood PetMood { get; set; } = PetMood.Happy; // mood of the pet, e.g., "Happy", "Sad", "Hungry", etc.
+
+
+	[Required] // 
+	public required int PetId { get; set; } // Foreign key to Pet
+
+	[ForeignKey("PetId")]
+	public required Pet Pet { get; set; }
+
+
+	public int UserPet { get; set; } // Foreign key to Pet
+	public PetMood PetMood { get; set; } = PetMood.Happy; // mood of the pet, e.g., "Happy", "Sad", "Hungry", etc.
     public int Happiness { get; set; } = 50; // happiness level of the pet, ranges from 0 to 100
     public int Energy { get; set; } = 75; // energy level of the pet, ranges from 0 to 100
     public int Hunger { get; set; } = 50; // hunger level of the pet, ranges from 0 to 100

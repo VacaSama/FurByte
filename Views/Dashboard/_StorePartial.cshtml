@@ -6,12 +6,13 @@
     // C# code goes here 
 }
 
-@model FurByte.ViewModels.StorePageViewModel
+@model FurByte.ViewModels.DashboardViewModel
 <!-- The link below is for modal insertion -->
 
 <h2> Adoptable Pets!</h2>
-@if(Model?.Pets != null ) {
-    @foreach (var pet in Model.Pets)
+@if(Model?.StorePets != null ) {
+{
+    @foreach (var pet in Model.StorePets)
     {
         <div>
             <div class="card" style="width: 18rem;">
@@ -26,8 +27,10 @@
                 </div>
             </div>
         </div>
+        }
     }
 }
+
 else
 {
     <p>No pets available right now.</p>
@@ -36,8 +39,8 @@ else
 
 <h2>Pet Products!</h2>
 
-@if(Model?.Products != null ) {
-    @foreach (var product in Model.Products)
+@if(Model?.StoreProducts!= null ) {
+    @foreach (var product in Model.StoreProducts)
     {
         <div>
             <div class="card" style="width: 18rem;">

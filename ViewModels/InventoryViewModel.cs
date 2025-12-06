@@ -2,14 +2,16 @@
 
 namespace FurByte.ViewModels;
 
-
 /// <summary>
 /// The Inventory View Model, represents the users inventory so that they can 
 /// keep track of products that they have and keep up with how many pet coins they have. 
 /// </summary>
 public class InventoryViewModel
 {
-	public Product Product { get; set; }
+	/// <summary>
+	/// The product that the user has in their inventory
+	/// </summary>
+	public Product? Product { get; set; }
 	/// <summary>
 	/// The product Quantity that they have remaining
 	/// </summary>
@@ -37,6 +39,6 @@ public class InventoryViewModel
 	/// Each user starts with 500 PetCoins to use in the app.
 	/// They can earn more by taking care of their pets. 
 	/// </summary>
-	public int PetCoins { get; set; } = 500; // starting coin amount for each new user.
+	public int PetCoins { get; set; } // starting coin amount for each new user is 500.
 
 }
