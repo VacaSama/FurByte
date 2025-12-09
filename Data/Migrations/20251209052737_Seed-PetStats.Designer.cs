@@ -4,6 +4,7 @@ using FurByte.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FurByte.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251209052737_Seed-PetStats")]
+    partial class SeedPetStats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,30 +203,6 @@ namespace FurByte.Migrations
                         .IsUnique();
 
                     b.ToTable("PetStats");
-
-                    b.HasData(
-                        new
-                        {
-                            PetStatsId = 1,
-                            Energy = 75,
-                            Happiness = 50,
-                            Hunger = 50,
-                            Hygiene = 50,
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PetId = 1,
-                            PetMood = 0
-                        },
-                        new
-                        {
-                            PetStatsId = 2,
-                            Energy = 75,
-                            Happiness = 75,
-                            Hunger = 50,
-                            Hygiene = 50,
-                            LastUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PetId = 2,
-                            PetMood = 4
-                        });
                 });
 
             modelBuilder.Entity("FurByte.Models.Product", b =>

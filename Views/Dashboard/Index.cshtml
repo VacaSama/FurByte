@@ -7,7 +7,6 @@
     ViewData["Title"] = "Dashboard";
 }
 
-
 @model FurByte.ViewModels.DashboardViewModel
 @await Html.PartialAsync("_StorePartial", Model)
 
@@ -46,22 +45,22 @@
     <div class="card-header">Pet Needs:</div>
 
     <div class="card-text">Happiness:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.PetStats.Happiness" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Stats.Happiness" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%" id="HappyBar"></div>
     </div>
 
     <div class="card-text">Energy:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.PetStats.Energy" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Stats.Energy" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%" id="EnergyBar"></div>
     </div>
 
     <div class="card-text">Hunger:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.PetStats.Hunger" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Stats.Hunger" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%" id="HungerBar"></div>
     </div>
 
     <div class="card-text">Hygiene:</div>
-    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.PetStats.Hygiene" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="@Model.Stats.Hygiene" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%" id="HygieneBar"></div>
     </div>
 </div>

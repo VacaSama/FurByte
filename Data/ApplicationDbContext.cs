@@ -10,26 +10,26 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 	// add and create things for the database here :)  
 
 	public DbSet<Pet> Pets { get; set; }
-	//public DbSet<PetStats> PetStats { get; set; }
+	public DbSet<PetStats> PetStats { get; set; }
 	public DbSet<RehomeRequest> RehomeRequests { get; set; }
 	public DbSet<Product> Products { get; set; }
 	public DbSet<UserProduct> UserProducts { get; set; }
 
-	// seed data for pets 
-	// create a viewmodel for the rehome requests?? -- non :)
-
+	#region Student Notes
 	/* This is a **special method** in your `DbContext` class.
 	It’s called automatically by Entity Framework when building the model 
 	(i.e., setting up classes map to the database).
 	*/
 	// protected override means you're **customizing** the default behavior.
-
+	#endregion
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
 		// always include this line!
 		base.OnModelCreating(builder);
 
-		// the model we are building is for the Pet.cs
+		///<summary>
+		/// An Entity that uses the model builder to seed data for Pets 
+		/// </summary>
 		builder.Entity<Pet>().HasData(
 			new Pet
 			{
@@ -50,9 +50,45 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 			}
 			);
 
-		///
-		///
-		///
+
+		///<summary>
+		/// An Entity that uses the model builder to seed data for PetStats
+		/// <see cref="PetStats"/> for default pet stats info i.e: Happiness value...etc
+		/// </summary>
+		
+
+		builder.Entity<Pet>()
+		.HasOne(p => p.Stats)
+		.WithOne(s => s.Pet)
+		.HasForeignKey<PetStats>(s => s.PetId);
+
+		builder.Entity<PetStats>().HasData(
+			new PetStats
+			{
+				PetStatsId = 1,
+				PetId = 1, // for Rudy 
+				Happiness = 50,
+				Energy = 75,
+				Hunger = 50,
+				Hygiene = 50,
+				PetMood = PetMood.Happy
+			},
+			new PetStats
+			{
+				PetStatsId = 2,
+				PetId = 2, // for Flower
+				Happiness = 75,
+				Energy = 75,
+				Hunger = 50,
+				Hygiene = 50,
+				PetMood = PetMood.Playful
+			}
+		);
+
+
+		///<summary>
+		/// An Entity that uses the model builder to seed data for Products 
+		/// </summary>
 		builder.Entity<Product>().HasData(
 			new Product
 			{
@@ -93,13 +129,23 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 				Category = "Hygiene",
 				ImageUrl = "~/images/products/pet_shampoo.png",
 				Price = 75
-			}
-			);
-		// previously there was an error because there were two cascade delete pathes 
+			});
+
+		///<summary>
+		/// An Entity that uses the model builder to create many to many/ one to many
+		/// realationships with RehomeRequest and ApplicationUser. 
+		/// Cascade delete rules configured to restrict delete behavior, we want to transfer
+		/// data not delete it. 
+		/// </summary>
+		
+		#region Cascade Transfer Info
+		/* previously there was an error because there were two cascade delete pathes 
 		// this was caused by the two foreign keys in RehomeRequest MODEL
 		// both linking to ApplicationUser(new owner and current owner), 
 		// configuring relationships for RehomeRequest
-		// using the builder
+		// using the builder */
+		#endregion
+
 		builder.Entity<RehomeRequest>()
 			.HasOne(r => r.Owner)
 			.WithMany()
@@ -111,6 +157,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 			.WithMany()
 			.HasForeignKey(r => r.NewOwnerId)
 			.OnDelete(DeleteBehavior.Restrict);
-			
 	} 
 }
+

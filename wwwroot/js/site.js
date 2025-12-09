@@ -52,6 +52,7 @@ window.onload = function () {
             this.context = this.canvas.getContext("2d");
         }
     };
+
     /* When the game starts up the Sprite will load into the game as well*/
     function startGame() {
         gameArea.start();

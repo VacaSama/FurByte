@@ -33,18 +33,16 @@ public class RehomeRequest
 	// the pets current owner 
 	[Required]
 	public required string OwnerId { get; set; }
-	[Required]
-	// explicit FK navigation to ApplicationUser(OwnerId)
 	[ForeignKey("OwnerId")]
-	public required ApplicationUser Owner { get; set; }
+	public ApplicationUser? Owner { get; set; }
 
 	// new owner taking the pet in
 	[Required]
 	// explicit FK navigation to ApplicationUser(NewOwnerId)
 	[ForeignKey("NewOwnerId")]
 	public required string NewOwnerId { get; set; }
-	[Required]
-	public required ApplicationUser NewOwner { get; set; }
+	public ApplicationUser? NewOwner { get; set; }
+
 
 	// the reason the current owner is rehoming the pet
 	// description field 

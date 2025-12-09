@@ -20,12 +20,27 @@ namespace FurByte.Controllers;
 	/// </summary>
 	/// <returns></returns>
 	public IActionResult Index()
-        {
-		var dashboardView = new DashboardViewModel();
-		if (dashboardView.PetStats == null)
+    {
+		var pet = _context.Pets
+			.Include(p => p.Stats)
+			.FirstOrDefault();
+
+		if (pet == null)
 		{
-			throw new Exception("PetStats is null!");
+			throw new Exception("No pet found in database.");
 		}
-		return View("Index", dashboardView); // explicitly load Index.cshtml
+
+		if (pet.Stats == null)
+		{
+			throw new Exception("PetStats is null in DB.");
+		}
+
+		var dashboardView = new DashboardViewModel
+		{
+			Pets = new List<Pet> { pet },
+			PetStats = new List<PetStats> { pet.Stats }
+		};
+
+		return View(dashboardView);
 	}
 }

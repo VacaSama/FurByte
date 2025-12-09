@@ -10,16 +10,16 @@
 <!-- The link below is for modal insertion -->
 
 <h2> Adoptable Pets!</h2>
-@if(Model?.StorePets != null ) {
+@if(Model?.Pets != null ) {
 {
-    @foreach (var pet in Model.StorePets)
+    @foreach (var pet in Model.Pets)
     {
         <div>
             <div class="card" style="width: 18rem;">
                 <img src="@pet.ImageUrl" class="card-img-top" alt="pet_pfp">
                 <div class="card-body">
                 <!-- Cat, Female -->
-                    <h5 class="card-subtitle">@pet.PetType, @pet.PetGender</h5>
+                    <h5 class="card-subtitle">@pet.PetType, @pet.Gender</h5>
                     <span>"Price: @pet.PetFee"</span>
 
                 <!-- purchase button below-->
@@ -39,8 +39,8 @@ else
 
 <h2>Pet Products!</h2>
 
-@if(Model?.StoreProducts!= null ) {
-    @foreach (var product in Model.StoreProducts)
+@if(Model?.Products!= null ) {
+    @foreach (var product in Model.Products)
     {
         <div>
             <div class="card" style="width: 18rem;">
