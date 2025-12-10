@@ -43,7 +43,7 @@ public class OverseerDashboardModel : PageModel
 
 	[Required]
 	public int OverseerRank { get; set; } = 1; // default and lowest rank
-
+	public List<RehomeRequest> RehomeRequests { get; set; }
 
 
 	/*AUTHORIZATION - OnGetAsync() method is testing to see if there is a user 
@@ -53,6 +53,7 @@ public class OverseerDashboardModel : PageModel
 	 */
 	public async Task<IActionResult> OnGetAsync()
 	{
+		RehomeRequests = await _context.RehomeRequests.ToListAsync();
 		var user = await _userManager.GetUserAsync(User);
 		if (user == null || !await _userManager.IsInRoleAsync(user, "Overseer"))
 		{
