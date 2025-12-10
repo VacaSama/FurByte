@@ -6,10 +6,10 @@
     ViewData["Title"] = "Rehome Request Form";
 } 
 
-@model FurByte.Models.Pet
+@model FurByte.Models.RehomeRequest
 
 <h1 class="display-4 text-center">Rehome Request Form</h1>
-<form class="card">
+<form asp-controller="RehomeRequest" asp-action="Index" method="post" class="card">
     <div class="mb-3">
         <h4> Your Pet is sad you both have to part ways...</h4>
         <p> While sad, it may be for the best, please fill out the 
@@ -17,44 +17,29 @@
             pet to the right home. 
         </p>
         <label for="" class="form-label">Your Username</label>
-        <input type="text" class="form-control" id="exampleUserName" aria-describedby="emailHelp">    
+        <input type="text" asp-for="Owner" class="form-control" id="exampleCurrentOwner" aria-describedby="emailHelp">    
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Pet Name</label>
-        <input type="text" class="form-control" id="examplePetName">
+        <input type="text" asp-for="PetName" class="form-control" id="examplePetName">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label option">*New Owner Username</label>
-        <div id="optionalField" class="form-text">*Optional: If you intend on rehoming to an Overseer you can leave this blank</div>
-        <input type="text" class="form-control" id="exampleNewOwner">
+        <div id="optionalField" class="form-text">*Optional: If you intend on rehoming to an Overseer please put 'Overseer'</div>
+        <input type="text" asp-for="NewOwner" class="form-control" id="exampleNewOwner">
     </div>
 
     <div class="mb-3">
         <label for="exampleInput1" class="form-label">Reason for Rehoming</label>
-        <input type="text" class="form-control" id="exampleInputPassword1">
+        <input type="text" asp-for="ReasonForRehome" class="form-control" id="exampleInputPassword1">
     </div>
     
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1" aria-describedby="confirmRehome">Rehome Confirmation</label>
         <div id="confirmRehome" class="form-text">Please check to confirm you want to rehome your pet.</div>
-    </div>
-
-    <!--NEW OWNER SELECTION-->
-    <div class="dropdown">
-        <p> Here you can make a selection on who will be the new 
-            caretaker of your pet. <br> If you do not have anyone available to take
-            your pet, please select the Overseers option.
-        </p>
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Options: 
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">The Overseers</a></li>
-            <!--<li><a class="dropdown-item" href="#">Another action</a></li>-->
-        </ul>
     </div>
 
     <div>

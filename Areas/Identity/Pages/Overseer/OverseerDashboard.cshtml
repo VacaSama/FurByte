@@ -17,17 +17,26 @@
     @foreach (var request in Model.RehomeRequests)
     {
         <div class="card g-col-6" style="width: 25rem;">
-            <p class="card-title">Rehome Request Placeholder:</p>
-            <p class="card-subtitle">(Sender)User/Player Username PlaceHolder:</p>
+            <p class="card-title">Rehome Request for: @request.OwnerId</p>
+            <p class="card-subtitle">@request.Owner</p>
             <p class="card-subtitle">(Receiver)User/Player Username PlaceHolder:</p>
-            <p class="card-subtitle">(Sender)Pet Name & PetId</p>
+            <p class="card-subtitle">@request.PetName</p>
             <p class="card-body">
-                {User} is requesting to rehome {Users Pet} back to the Overseers.
+                @request.Owner is requesting to rehome @request.PetName back to the Overseers.
                 <br />
+                Reason for Rehome: @request.ReasonForRehome<br />
                 Overseer @Model.OverseerFirstName, do you Approve or Deny this request?
+                <br />
             </p>
-            <button type="button" class="btn btn-light">Approve</button>
-            <button type="button" class="btn btn-primary">Deny</button>
+            <form method="post" action="/RehomeRequest/Approve">
+                <input type="hidden" name="id" value="@request.RehomeRequestId" />
+                <button type="submit">Approve</button>
+            </form>
+
+            <form method="post" action="/RehomeRequest/Deny">
+                <input type="hidden" name="id" value="@request.RehomeRequestId" />
+                <button type="submit">Deny</button>
+            </form>
 
         </div>
 
@@ -39,7 +48,6 @@ else {
 }
 
 @* 
-
 <div class="grid text-center">
     <div class="card g-col-6" style="width: 25rem;">
         <p class="card-title">Rehome Request Placeholder:</p>
